@@ -1,0 +1,27 @@
+name: Deploy
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - name: Use Node.js 20.12.2
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.12.2'
+      - name: npm ci. build
+        run: |
+          npm ci
+          npm run build
+      - name: Deploy to Hosting
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          local-dir: ./dist/
+          server: 37.9.13.206
+          username: kleko996
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /www/pooped.klekovvlad.ru/
