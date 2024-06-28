@@ -22,6 +22,6 @@ jobs:
         with:
           local-dir: ./.next/
           server: 37.9.13.206
-          username: kleko996
+          username: kleko996_poopin
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /www/pooped.klekovvlad.ru/
