@@ -20,7 +20,7 @@ jobs:
       - name: Deploy to Hosting
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          local-dir: ./dist/
+          local-dir: ./.next/
           server: 37.9.13.206
           username: kleko996
           password: ${{ secrets.FTP_PASSWORD }}
